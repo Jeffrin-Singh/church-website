@@ -6,15 +6,15 @@ export default function Footer() {
 
   return (
     <footer className="bg-accent-indigo text-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-8 md:py-10">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Fraunces, serif' }}>
+            <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Fraunces, serif' }}>
               C.S.I. Christ New Church
             </h3>
-            <p className="text-white/80 text-sm leading-relaxed mb-4">
+            <p className="text-white/80 text-sm leading-relaxed mb-3">
               Serving the community with faith, hope, and love since 2019. A warm and welcoming congregation of believers.
             </p>
             <div className="flex gap-4 text-sm font-bold">
@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold mb-4">Quick Links</h4>
+            <h4 className="font-bold mb-3">Quick Links</h4>
             <ul className="space-y-2 text-sm text-white/80">
               <li><Link href="/" className="hover:text-accent-brass transition">Home</Link></li>
               <li><Link href="/about" className="hover:text-accent-brass transition">About Us</Link></li>
@@ -44,7 +44,7 @@ export default function Footer() {
 
           {/* Ministry Links */}
           <div>
-            <h4 className="font-bold mb-4">Ministry</h4>
+            <h4 className="font-bold mb-3">Ministry</h4>
             <ul className="space-y-2 text-sm text-white/80">
               <li><Link href="/give" className="hover:text-accent-brass transition">Give Online</Link></li>
               <li><Link href="/contact" className="hover:text-accent-brass transition">Contact Us</Link></li>
@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold mb-4">Contact</h4>
+            <h4 className="font-bold mb-3">Contact</h4>
             <div className="space-y-3 text-sm text-white/80">
               <div className="flex gap-3">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent-brass" />
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/20 my-8" />
+        <div className="border-t border-white/20 my-6" />
 
         {/* Bottom footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">

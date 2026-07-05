@@ -50,16 +50,16 @@ export default function Contact() {
             <div className="space-y-6">
               {/* Address */}
               <BorderGlow
-                backgroundColor="white"
+                backgroundColor="rgba(255, 255, 255, 0.05)"
                 borderRadius={12}
                 glowColor="0 0 100"
-                glowIntensity={0.8}
+                glowIntensity={1.2}
                 colors={['#8B3A2B', '#B78A22', '#2F6F6B']}
                 edgeSensitivity={25}
                 glowRadius={30}
-                fillOpacity={0.3}
+                fillOpacity={0.4}
               >
-                <div className="rounded-lg p-6">
+                <div className="rounded-lg p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-accent-red flex-shrink-0 mt-1 group-hover:animate-bounce" />
                   <div>
@@ -77,16 +77,16 @@ export default function Contact() {
 
               {/* Phone */}
               <BorderGlow
-                backgroundColor="white"
+                backgroundColor="rgba(255, 255, 255, 0.05)"
                 borderRadius={12}
                 glowColor="40 70 60"
-                glowIntensity={0.8}
+                glowIntensity={1.2}
                 colors={['#8B3A2B', '#B78A22', '#2F6F6B']}
                 edgeSensitivity={25}
                 glowRadius={30}
-                fillOpacity={0.3}
+                fillOpacity={0.4}
               >
-                <div className="rounded-lg p-6">
+                <div className="rounded-lg p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-accent-brass flex-shrink-0 mt-1 hover:animate-pulse" />
                   <div>
@@ -104,16 +104,16 @@ export default function Contact() {
 
               {/* Email */}
               <BorderGlow
-                backgroundColor="white"
+                backgroundColor="rgba(255, 255, 255, 0.05)"
                 borderRadius={12}
                 glowColor="180 70 60"
-                glowIntensity={0.8}
+                glowIntensity={1.2}
                 colors={['#8B3A2B', '#B78A22', '#2F6F6B']}
                 edgeSensitivity={25}
                 glowRadius={30}
-                fillOpacity={0.3}
+                fillOpacity={0.4}
               >
-                <div className="rounded-lg p-6">
+                <div className="rounded-lg p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-accent-teal flex-shrink-0 mt-1 group-hover:rotate-12 transition-transform" />
                   <div>
@@ -131,16 +131,16 @@ export default function Contact() {
 
               {/* Office Hours */}
               <BorderGlow
-                backgroundColor="white"
+                backgroundColor="rgba(255, 255, 255, 0.05)"
                 borderRadius={12}
                 glowColor="260 70 60"
-                glowIntensity={0.8}
+                glowIntensity={1.2}
                 colors={['#8B3A2B', '#B78A22', '#2F6F6B']}
                 edgeSensitivity={25}
                 glowRadius={30}
-                fillOpacity={0.3}
+                fillOpacity={0.4}
               >
-                <div className="rounded-lg p-6">
+                <div className="rounded-lg p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <Clock className="w-6 h-6 text-accent-indigo flex-shrink-0 mt-1 animate-spin hover:animate-none transition" />
                   <div>

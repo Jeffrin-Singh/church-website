@@ -54,7 +54,7 @@ export default function Contact() {
                 borderRadius={12}
                 glowColor="0 0 100"
                 glowIntensity={0.6}
-                colors={['#6B46C1', '#8B5CF6', '#A78BFA']}
+                colors={['#9BA389', '#C8956A', '#D4B896']}
                 edgeSensitivity={25}
                 glowRadius={30}
                 fillOpacity={0.4}
@@ -81,7 +81,7 @@ export default function Contact() {
                 borderRadius={12}
                 glowColor="40 70 60"
                 glowIntensity={0.6}
-                colors={['#6B46C1', '#8B5CF6', '#A78BFA']}
+                colors={['#9BA389', '#C8956A', '#D4B896']}
                 edgeSensitivity={25}
                 glowRadius={30}
                 fillOpacity={0.4}
@@ -108,7 +108,7 @@ export default function Contact() {
                 borderRadius={12}
                 glowColor="180 70 60"
                 glowIntensity={0.6}
-                colors={['#6B46C1', '#8B5CF6', '#A78BFA']}
+                colors={['#9BA389', '#C8956A', '#D4B896']}
                 edgeSensitivity={25}
                 glowRadius={30}
                 fillOpacity={0.4}
@@ -135,7 +135,7 @@ export default function Contact() {
                 borderRadius={12}
                 glowColor="260 70 60"
                 glowIntensity={0.6}
-                colors={['#6B46C1', '#8B5CF6', '#A78BFA']}
+                colors={['#9BA389', '#C8956A', '#D4B896']}
                 edgeSensitivity={25}
                 glowRadius={30}
                 fillOpacity={0.4}

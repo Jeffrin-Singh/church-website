@@ -25,33 +25,6 @@ export default function Hero() {
           saturation={0.9}
         />
       </div>
-      {/* Animated stained glass background with multiple parallax layers */}
-      <div className="absolute inset-0 z-10" style={{ transform: `translateY(${offset * 0.6}px)` }}>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-          {/* Outer arch frame */}
-          <path d="M 150 200 Q 150 100 300 100 L 900 100 Q 1050 100 1050 200" stroke="#ffffff" strokeWidth="8" fill="none" opacity="0.15" />
-          <path d="M 150 200 Q 150 100 300 100 L 900 100 Q 1050 100 1050 200" stroke="#B78A22" strokeWidth="4" fill="none" opacity="0.4" />
-          
-          {/* Central cross */}
-          <line x1="600" y1="150" x2="600" y2="650" stroke="#ffffff" strokeWidth="6" opacity="0.2" />
-          <line x1="350" y1="400" x2="850" y2="400" stroke="#ffffff" strokeWidth="6" opacity="0.2" />
-          
-          {/* Lead lines forming geometric patterns */}
-          <path d="M 300 150 Q 350 250 400 350 T 500 550" stroke="#2F6F6B" strokeWidth="3" fill="none" opacity="0.3" />
-          <path d="M 900 150 Q 850 250 800 350 T 700 550" stroke="#2F6F6B" strokeWidth="3" fill="none" opacity="0.3" />
-          
-          {/* Decorative glass panes */}
-          <circle cx="300" cy="300" r="40" fill="#ffffff" opacity="0.08" />
-          <circle cx="900" cy="300" r="40" fill="#2F6F6B" opacity="0.1" />
-          <circle cx="600" cy="250" r="50" fill="#B78A22" opacity="0.1" />
-          <circle cx="600" cy="500" r="45" fill="#ffffff" opacity="0.05" />
-          
-          {/* Geometric mosaic pattern */}
-          <polygon points="450,200 550,200 600,280 500,280" fill="#ffffff" opacity="0.08" />
-          <polygon points="650,200 750,200 700,280 600,280" fill="#2F6F6B" opacity="0.1" />
-          <polygon points="500,400 700,400 750,500 450,500" fill="#B78A22" opacity="0.08" />
-        </svg>
-      </div>
 
       {/* Content */}
       <div className="relative z-20 text-center px-6 sm:px-8 max-w-2xl mx-auto" style={{ transform: `translateY(${offset * 0.3}px)` }}>

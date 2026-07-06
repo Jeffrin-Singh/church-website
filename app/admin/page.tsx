@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { getServiceSchedules, getEvents, getLeadership, getSermons, getBlogPosts, getGivingOptions } from '@/app/actions/church-content'
+import { getServiceSchedules, getEvents, getLeadership, getSermons, getBlogPosts, getGivingOptions } from '@/app/actions/supabase-data'
 import Link from 'next/link'
 
 export default function AdminDashboard() {

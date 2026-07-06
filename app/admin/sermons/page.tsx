@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { getSermons, createSermon, updateSermon, deleteSermon } from '@/app/actions/church-content'
+import { getSermons, createSermon, updateSermon, deleteSermon } from '@/app/actions/supabase-data'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'

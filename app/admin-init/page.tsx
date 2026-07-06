@@ -70,7 +70,7 @@ export default function AdminInitPage() {
         <div className="mt-6 p-4 bg-muted rounded-lg">
           <p className="text-xs text-muted-foreground">
             <strong>Admin Credentials:</strong><br/>
-            Email: <code className="bg-background px-1 py-0.5 rounded">admin@csi-church.local</code><br/>
+            Email: <code className="bg-background px-1 py-0.5 rounded">admin@csi-new-church.com</code><br/>
             Password: <code className="bg-background px-1 py-0.5 rounded">Jesus@123</code>
           </p>
         </div>

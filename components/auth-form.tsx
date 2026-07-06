@@ -10,7 +10,7 @@ import { Card } from '@/components/ui/card'
 
 export function AuthForm() {
   const router = useRouter()
-  const [email, setEmail] = useState('admin@csi-church.local')
+  const [email, setEmail] = useState('admin@csi-new-church.com')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -84,7 +84,7 @@ export function AuthForm() {
         <div className="mt-6 p-4 bg-muted rounded-lg">
           <p className="text-xs text-muted-foreground">
             <strong>Demo Credentials:</strong><br/>
-            Username: <code className="bg-background px-1 py-0.5 rounded">admin@csi-church.local</code><br/>
+            Username: <code className="bg-background px-1 py-0.5 rounded">admin@csi-new-church.com</code><br/>
             Password: <code className="bg-background px-1 py-0.5 rounded">Jesus@123</code>
           </p>
         </div>

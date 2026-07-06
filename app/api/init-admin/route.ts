@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST() {
   try {
-    const email = 'admin@csi-church.local'
+    const email = 'admin@csi-new-church.com'
     const password = 'Jesus@123'
     const name = 'CSI New Church Admin'
 

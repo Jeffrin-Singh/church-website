@@ -1,18 +1,19 @@
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
+import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const session = await auth.api.getSession({ headers: await headers() })
-  
-  if (!session?.user) {
-    redirect('/sign-in')
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect('/auth/login')
   }
 
   return (
@@ -21,7 +22,7 @@ export default async function AdminLayout({
       <div className="w-64 bg-white shadow-lg">
         <div className="p-6">
           <h1 className="text-2xl font-bold text-gray-800">Admin Panel</h1>
-          <p className="text-sm text-gray-600 mt-1">Welcome, {session.user.name || session.user.email}</p>
+          <p className="text-sm text-gray-600 mt-1">Welcome, {user.email}</p>
         </div>
         
         <nav className="mt-6 space-y-2 px-4">
@@ -38,8 +39,9 @@ export default async function AdminLayout({
           <form
             action={async () => {
               'use server'
-              await auth.api.signOut({ headers: await headers() })
-              redirect('/sign-in')
+              const supabase = await createClient()
+              await supabase.auth.signOut()
+              redirect('/auth/login')
             }}
           >
             <button

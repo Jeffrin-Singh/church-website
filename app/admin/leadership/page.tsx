@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { getLeadership, createLeadership, updateLeadership, deleteLeadership } from '@/app/actions/supabase-data'
+import { getLeadership, createLeader, updateLeader, deleteLeader } from '@/app/actions/supabase-data'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -49,9 +49,9 @@ export default function LeadershipPage() {
     e.preventDefault()
     try {
       if (editingId) {
-        await updateLeadership(editingId, { ...formData, order: parseInt(formData.order) })
+        await updateLeader(editingId, { ...formData, order: parseInt(formData.order) })
       } else {
-        await createLeadership({ ...formData, order: parseInt(formData.order) })
+        await createLeader({ ...formData, order: parseInt(formData.order) })
       }
       setFormData({ name: '', role: '', bio: '', image: '', order: '0' })
       setEditingId(null)
@@ -65,7 +65,7 @@ export default function LeadershipPage() {
   async function handleDelete(id: string) {
     if (confirm('Are you sure?')) {
       try {
-        await deleteLeadership(id)
+        await deleteLeader(id)
         await loadLeaders()
       } catch (error) {
         console.error('Error deleting leader:', error)

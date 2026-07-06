@@ -8,7 +8,7 @@ export default function Hero() {
   const { offset } = useParallax(0.35)
 
   return (
-    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-950">
       {/* Light Rays Background Effect */}
       <div className="absolute inset-0 z-0">
         <LightRays

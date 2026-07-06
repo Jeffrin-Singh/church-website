@@ -6,9 +6,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-accent-indigo text-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-8 md:py-10">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-5 md:py-6">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
           {/* About */}
           <div>
             <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Fraunces, serif' }}>
@@ -46,7 +46,6 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-3">Ministry</h4>
             <ul className="space-y-2 text-sm text-white/80">
-              <li><Link href="/give" className="hover:text-accent-brass transition">Give Online</Link></li>
               <li><Link href="/contact" className="hover:text-accent-brass transition">Contact Us</Link></li>
               <li><a href="https://www.youtube.com/@csinewchurch" target="_blank" rel="noopener noreferrer" className="hover:text-accent-brass transition">Watch Live</a></li>
               <li><Link href="/sermons" className="hover:text-accent-brass transition">Subscribe to Podcasts</Link></li>
@@ -79,10 +78,10 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/20 my-6" />
+        <div className="border-t border-white/20 my-4" />
 
         {/* Bottom footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-white/70">
           <p>&copy; {currentYear} C.S.I. Christ New Church. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-accent-brass transition">Privacy Policy</Link>

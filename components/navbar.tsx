@@ -27,7 +27,6 @@ export default function Navbar() {
             <Link href="/sermons" className="text-foreground hover:text-accent-red transition font-medium">Sermons</Link>
             <Link href="/events" className="text-foreground hover:text-accent-red transition font-medium">Events</Link>
             <Link href="/blog" className="text-foreground hover:text-accent-red transition font-medium">Blog</Link>
-            <Link href="/give" className="text-foreground hover:text-accent-red transition font-medium">Give</Link>
             <Link href="/contact" className="text-foreground hover:text-accent-red transition font-medium">Contact</Link>
           </div>
 
@@ -59,7 +58,6 @@ export default function Navbar() {
               <Link href="/sermons" className="block py-2 text-foreground hover:text-accent-red font-medium">Sermons</Link>
               <Link href="/events" className="block py-2 text-foreground hover:text-accent-red font-medium">Events</Link>
               <Link href="/blog" className="block py-2 text-foreground hover:text-accent-red font-medium">Blog</Link>
-              <Link href="/give" className="block py-2 text-foreground hover:text-accent-red font-medium">Give</Link>
               <Link href="/contact" className="block py-2 text-foreground hover:text-accent-red font-medium">Contact</Link>
               <a
                 href="https://www.youtube.com/@csinewchurch"

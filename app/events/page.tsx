@@ -1,115 +1,69 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Navbar from '@/components/navbar'
 import SectionDivider from '@/components/section-divider'
 import Footer from '@/components/footer'
-import { Calendar, MapPin, Users } from 'lucide-react'
+import { Calendar, MapPin } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 
 export default function Events() {
-  const allEvents = [
-    {
-      id: 1,
-      date: 'Dec 24',
-      month: 'Dec',
-      day: '24',
-      title: 'Christmas Eve Candlelight Service',
-      time: '6:00 PM',
-      location: 'Main Sanctuary',
-      description: 'Join us for a special candlelight service celebrating the birth of Christ.',
-      category: 'Celebration'
-    },
-    {
-      id: 2,
-      date: 'Dec 31',
-      month: 'Dec',
-      day: '31',
-      title: 'New Year\'s Eve Prayer Vigil',
-      time: '9:00 PM',
-      location: 'Prayer Room',
-      description: 'End the year in prayer and reflection as we welcome the new year.',
-      category: 'Prayer'
-    },
-    {
-      id: 3,
-      date: 'Jan 5',
-      month: 'Jan',
-      day: '05',
-      title: 'Epiphany Celebration Service',
-      time: '10:30 AM',
-      location: 'Main Sanctuary',
-      description: 'Celebrate the manifestation of Christ with special music and testimonies.',
-      category: 'Worship'
-    },
-    {
-      id: 4,
-      date: 'Jan 12',
-      month: 'Jan',
-      day: '12',
-      title: 'Community Outreach & Food Distribution',
-      time: '9:00 AM',
-      location: 'Fellowship Hall',
-      description: 'Join us in serving the local community. Volunteers welcome!',
-      category: 'Service'
-    },
-    {
-      id: 5,
-      date: 'Jan 19',
-      month: 'Jan',
-      day: '19',
-      title: 'Youth Fellowship & Games Night',
-      time: '6:00 PM',
-      location: 'Youth Center',
-      description: 'Fun evening of games, fellowship, and snacks for young adults.',
-      category: 'Fellowship'
-    },
-    {
-      id: 6,
-      date: 'Jan 26',
-      month: 'Jan',
-      day: '26',
-      title: 'Women\'s Bible Study & Craft Workshop',
-      time: '10:00 AM',
-      location: 'Fellowship Hall',
-      description: 'Interactive Bible study with craft activities and refreshments.',
-      category: 'Study'
-    },
-    {
-      id: 7,
-      date: 'Feb 2',
-      month: 'Feb',
-      day: '02',
-      title: 'Candlemas Service & Child Dedication',
-      time: '10:30 AM',
-      location: 'Main Sanctuary',
-      description: 'A special service of blessing for young children and their families.',
-      category: 'Worship'
-    },
-    {
-      id: 8,
-      date: 'Feb 9',
-      month: 'Feb',
-      day: '09',
-      title: 'Men\'s Breakfast & Discussion Group',
-      time: '8:00 AM',
-      location: 'Fellowship Hall',
-      description: 'Breakfast and discussion on leadership and faith topics.',
-      category: 'Fellowship'
+  const [events, setEvents] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const supabase = createClient()
+        const { data, error } = await supabase
+          .from('events')
+          .select('*')
+          .order('date', { ascending: true })
+
+        if (error) throw error
+        setEvents(data || [])
+      } catch (error) {
+        console.error('Error fetching events:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+
+    fetchEvents()
+  }, [])
+
+  const formatEventDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return {
+      month: date.toLocaleDateString('en-US', { month: 'short' }),
+      day: date.getDate().toString().padStart(2, '0'),
+      time: date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+    }
+  }
 
   return (
-    <>
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
 
-      <section className="py-16 md:py-24 px-6 sm:px-8 bg-gradient-to-b from-wall to-secondary">
+      {/* Hero Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/10">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-accent-red mb-4" style={{ fontFamily: 'Fraunces, serif' }}>
-              Church Events
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold text-foreground mb-4" style={{ fontFamily: 'Fraunces, serif' }}>
+              Upcoming Events
             </h1>
-            <p className="text-lg text-foreground/70">
-              Join us for worship, fellowship, learning, and service. Find an event that speaks to your heart.
+            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+              Join us for worship, fellowship, and community service opportunities. All are welcome!
             </p>
           </div>
+        </div>
+      </section>
 
+      <SectionDivider />
+
+      {/* Events Grid */}
+      <section className="py-16 px-4 flex-1">
+        <div className="max-w-6xl mx-auto">
           {loading ? (
             <div className="text-center py-12">
               <p className="text-foreground/70">Loading events...</p>
@@ -169,46 +123,12 @@ export default function Events() {
               })}
             </div>
           )}
-
-          {/* Information Section */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-6 border border-border/50 text-center">
-              <Calendar className="w-12 h-12 text-accent-red mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-foreground mb-2">Weekly Schedule</h3>
-              <p className="text-foreground/70 text-sm">
-                Regular services every Sunday at 8:30 AM and 10:30 AM, plus weekday prayer and study groups.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 border border-border/50 text-center">
-              <Users className="w-12 h-12 text-accent-brass mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-foreground mb-2">Ministries</h3>
-              <p className="text-foreground/70 text-sm">
-                Youth, women, men, and children ministries available year-round with special seasonal activities.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 border border-border/50 text-center">
-              <MapPin className="w-12 h-12 text-accent-teal mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-foreground mb-2">Location</h3>
-              <p className="text-foreground/70 text-sm">
-                234 Temple Street, Coimbatore, Tamil Nadu 641001. Easy parking and accessible facilities.
-              </p>
-            </div>
-          </div>
-
-          {/* Contact Section */}
-          <div className="mt-12 bg-gradient-to-r from-accent-red/5 to-accent-teal/5 rounded-lg p-8 text-center border border-border">
-            <h2 className="text-2xl font-bold text-accent-red mb-4" style={{ fontFamily: 'Fraunces, serif' }}>
-              Questions About Our Events?
-            </h2>
-            <p className="text-foreground/80 mb-6">
-              Contact us at <a href="mailto:hello@csinewchurch.church" className="text-accent-red font-semibold hover:underline">hello@csinewchurch.church</a> or call <a href="tel:+914222234567" className="text-accent-red font-semibold hover:underline">+91-422-2234567</a>
-            </p>
-          </div>
         </div>
       </section>
 
       <SectionDivider />
+
       <Footer />
-    </>
+    </div>
   )
 }

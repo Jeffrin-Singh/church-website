@@ -8,21 +8,21 @@ export default function Hero() {
   const { offset } = useParallax(0.35)
 
   return (
-    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-950">
-      {/* Light Rays Background Effect */}
+    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-gray-900 to-black">
+      {/* Golden Light Rays Background Effect */}
       <div className="absolute inset-0 z-0">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1.2}
-          lightSpread={0.8}
-          rayLength={1.8}
+          raysColor="#d4af37"
+          raysSpeed={1.5}
+          lightSpread={1.0}
+          rayLength={2.0}
           followMouse={true}
-          mouseInfluence={0.15}
-          noiseAmount={0.08}
-          distortion={0.03}
-          fadeDistance={1.5}
-          saturation={0.9}
+          mouseInfluence={0.2}
+          noiseAmount={0.12}
+          distortion={0.05}
+          fadeDistance={1.8}
+          saturation={1.0}
         />
       </div>
 

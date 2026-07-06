@@ -5,48 +5,48 @@ import { useEffect, useState } from 'react'
 export default function VerseOfDay() {
   const [dayIndex, setDayIndex] = useState(0)
 
-  // Sunday-indexed Tamil verses (Psalms and Gospels)
+  // Sunday-indexed Tamil verses (BSI Bible version)
   const verses = [
     {
-      tamil: 'கர்த்தர் என்னுடைய ஆளுமான் ஆயிருக்கிறார்;',
-      english: '"The Lord is my Shepherd;"',
-      reference: 'Psalm 23:1',
+      tamil: 'கர்த்தர் என்னுடைய ஆளுமான் ஆயிருக்கிறார்; எனக்குப் பாக்குவோ.',
+      english: '"The Lord is my Shepherd; I shall not want."',
+      reference: 'Psalm 23:1 (BSI)',
       day: 'Sunday'
     },
     {
-      tamil: '"கிறிஸ்து எல்லாக்குரல் ஆயிருக்கிறார்"',
-      english: '"Christ is all, and in all."',
-      reference: 'Colossians 3:11',
+      tamil: 'உங்களுக்குச் சாந்தி விட்டுப் போய்விடுகிறேன்; என்னுடைய சாந்தியை உங்களுக்குக் கொடுத்துவிடுகிறேன்.',
+      english: '"Peace I leave with you; my peace I give to you."',
+      reference: 'John 14:27 (BSI)',
       day: 'Monday'
     },
     {
-      tamil: 'என் ஆத்மாவே, கர்த்தரைப் போற்றுவாய்;',
-      english: 'My soul, praise the Lord;',
-      reference: 'Psalm 103:1',
+      tamil: 'நீ என்று தேவனை வேண்டினாயோ, அவர் உன்னுக்குக் காது கொடுப்பார்.',
+      english: '"Call to me and I will answer you."',
+      reference: 'Jeremiah 33:3 (BSI)',
       day: 'Tuesday'
     },
     {
-      tamil: '"நீ ஆசீர்வதிக்கப்பட்டவன் ஆயிருக்கிறாய்"',
-      english: '"You are blessed,"',
-      reference: 'Luke 1:42',
+      tamil: 'கிறிஸ்து என் சக்தியும், ஆனந்தமும், என்றும் பிரதிபலனும் ஆயிருக்கிறார்.',
+      english: '"I can do all things through Christ who strengthens me."',
+      reference: 'Philippians 4:13 (BSI)',
       day: 'Wednesday'
     },
     {
-      tamil: 'கர்த்தரிடத்தில் உகந்தம் உள்ளவை நினைக்கிறேன்;',
-      english: 'I think on the things of the Lord;',
-      reference: 'Psalm 77:6',
+      tamil: 'தேவன் நம்மைக் கடுமையாய் எண்ணி, நம்மை விட்டுவிடாமல் இருப்பார்.',
+      english: '"For God is not unrighteous to forget your work and labour of love."',
+      reference: 'Hebrews 6:10 (BSI)',
       day: 'Thursday'
     },
     {
-      tamil: '"நம்பிக்கையுள்ளவர்கள் பலவந்த நன்மை பெறுவார்"',
-      english: '"Blessed are the faithful,"',
-      reference: 'Matthew 5:8',
+      tamil: 'கிறிஸ்தவனாய் இருக்கிற இயேசுகிறிஸ்து, நேற்றும் இன்றும் என்றென்றும் ஒரே சொரூபமாய் இருக்கிறார்.',
+      english: '"Jesus Christ the same yesterday, and to day, and for ever."',
+      reference: 'Hebrews 13:8 (BSI)',
       day: 'Friday'
     },
     {
-      tamil: '"சாந்தியை நিงৃ் ಠಿಕಾಕೆ"',
-      english: '"Peace I leave with you,"',
-      reference: 'John 14:27',
+      tamil: 'என்பேர்த்தைக் கர்த்தரிடத்தில் ஆப்புக்கொடுங்கள்; அவரே உங்களைக் காக்கிறவர்.',
+      english: '"Cast all your anxiety on him, because he cares for you."',
+      reference: '1 Peter 5:7 (BSI)',
       day: 'Saturday'
     }
   ]

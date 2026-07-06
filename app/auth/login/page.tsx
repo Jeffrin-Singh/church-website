@@ -91,13 +91,7 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <div className="mt-6 p-4 bg-muted rounded-lg">
-          <p className="text-xs text-muted-foreground">
-            <strong>Demo Credentials:</strong><br/>
-            Email: <code className="bg-background px-1 py-0.5 rounded">admin@csi-new-church.com</code><br/>
-            Password: <code className="bg-background px-1 py-0.5 rounded">Jesus@123</code>
-          </p>
-        </div>
+
       </Card>
     </main>
   )

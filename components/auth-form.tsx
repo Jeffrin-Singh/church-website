@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { authClient } from '@/lib/auth-client'
 import { Button } from '@/components/ui/button'
@@ -9,24 +8,19 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card } from '@/components/ui/card'
 
-export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
+export function AuthForm() {
   const router = useRouter()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('admin@csi-church.local')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-
-  const isSignUp = mode === 'sign-up'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
     setLoading(true)
 
-    const { error } = isSignUp
-      ? await authClient.signUp.email({ email, password, name })
-      : await authClient.signIn.email({ email, password })
+    const { error } = await authClient.signIn.email({ email, password })
 
     setLoading(false)
 
@@ -44,28 +38,14 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
       <Card className="w-full max-w-sm p-6">
         <div className="mb-6">
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-            {isSignUp ? 'Create an account' : 'Welcome back'}
+            Admin Sign In
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            {isSignUp
-              ? 'Sign up to get started'
-              : 'Sign in to your account to continue'}
+            Sign in to manage church content
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {isSignUp && (
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                autoComplete="name"
-              />
-            </div>
-          )}
           <div className="flex flex-col gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -82,11 +62,11 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
             <Input
               id="password"
               type="password"
+              placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              minLength={8}
-              autoComplete={isSignUp ? 'new-password' : 'current-password'}
+              autoComplete="current-password"
             />
           </div>
 
@@ -97,23 +77,17 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
           )}
 
           <Button type="submit" disabled={loading} className="w-full">
-            {loading
-              ? 'Please wait...'
-              : isSignUp
-                ? 'Create account'
-                : 'Sign in'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
-        <p className="text-sm text-muted-foreground text-center mt-6">
-          {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
-          <Link
-            href={isSignUp ? '/sign-in' : '/sign-up'}
-            className="text-foreground font-medium underline-offset-4 hover:underline"
-          >
-            {isSignUp ? 'Sign in' : 'Sign up'}
-          </Link>
-        </p>
+        <div className="mt-6 p-4 bg-muted rounded-lg">
+          <p className="text-xs text-muted-foreground">
+            <strong>Demo Credentials:</strong><br/>
+            Username: <code className="bg-background px-1 py-0.5 rounded">admin@csi-church.local</code><br/>
+            Password: <code className="bg-background px-1 py-0.5 rounded">Jesus@123</code>
+          </p>
+        </div>
       </Card>
     </main>
   )

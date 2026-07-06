@@ -77,10 +77,10 @@ export default function About() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Rev. Samuel Jacoby</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-2">H.E. சந்திரகுமார்</h3>
                   <p className="text-accent-red font-semibold mb-3">Senior Pastor</p>
                   <p className="text-foreground/70 text-sm">
-                    With over 20 years of pastoral experience, Rev. Jacoby leads our church with vision, compassion, and a deep commitment to the Gospel. He holds a Master&apos;s degree in Theology and is actively involved in community outreach initiatives.
+                    With over 20 years of pastoral experience, H.E. சந்திரகுமார் leads our church with vision, compassion, and a deep commitment to the Gospel. He holds a Master&apos;s degree in Theology and is actively involved in community outreach initiatives.
                   </p>
                 </div>
                 <div>

@@ -1,16 +1,22 @@
 'use client'
 
 import Link from 'next/link'
-import { useParallax } from '@/hooks/useParallax'
-import LightRays from './LightRays'
+import { motion } from 'framer-motion'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 
 export default function Hero() {
-  const { offset } = useParallax(0.35)
-
   return (
-    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-white">
-      {/* Content */}
-      <div className="relative z-20 text-center px-6 sm:px-8 max-w-2xl mx-auto" style={{ transform: `translateY(${offset * 0.3}px)` }}>
+    <AuroraBackground className="min-h-screen md:min-h-[80vh]">
+      <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        className="relative z-20 text-center px-6 sm:px-8 max-w-2xl mx-auto"
+      >
         <div className="mb-4 animate-shimmer">
           <div className="inline-block px-4 py-2 bg-accent-red/10 rounded-full border border-accent-red/30">
             <p className="text-accent-red font-semibold text-sm">Welcome to Our Church</p>
@@ -56,10 +62,10 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Decorative bottom accent */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-red via-accent-brass to-accent-teal opacity-80" />
-    </section>
+    </AuroraBackground>
   )
 }

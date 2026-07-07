@@ -10,6 +10,12 @@ export default async function AdminLayout({
   children: React.ReactNode
 }) {
   const supabase = await createClient()
+
+  // If Supabase client is null (missing env vars), redirect to login
+  if (!supabase) {
+    redirect('/auth/login')
+  }
+
   const {
     data: { user },
   } = await supabase.auth.getUser()

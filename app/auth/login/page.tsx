@@ -19,10 +19,20 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
+  // Check if Supabase is configured
+  const isConfigured = supabase !== null && supabase !== undefined
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
     setLoading(true)
+
+    // Fail gracefully if Supabase is not configured
+    if (!isConfigured) {
+      setError('Authentication service is not configured. Please check environment variables.')
+      setLoading(false)
+      return
+    }
 
     try {
       const { error: authError } = await supabase.auth.signInWithPassword({
@@ -57,7 +67,15 @@ export default function LoginPage() {
           </p>
         </div>
 
-        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+        {!isConfigured && (
+          <Alert className="border-yellow-600 bg-yellow-50 mb-4">
+            <p className="text-sm text-yellow-900">
+              ⚠️ Authentication is not configured. Supabase environment variables are missing.
+            </p>
+          </Alert>
+        )}
+
+        <form onSubmit={handleLogin} className="flex flex-col gap-4" disabled={!isConfigured}>
           <div className="flex flex-col gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -67,6 +85,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
+              disabled={!isConfigured}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -79,6 +98,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
+              disabled={!isConfigured}
             />
           </div>
 
@@ -88,8 +108,8 @@ export default function LoginPage() {
             </Alert>
           )}
 
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? 'Signing in...' : 'Sign In'}
+          <Button type="submit" disabled={loading || !isConfigured} className="w-full">
+            {!isConfigured ? 'Not Configured' : loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 

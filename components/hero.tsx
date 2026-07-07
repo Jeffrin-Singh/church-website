@@ -2,11 +2,10 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { AuroraBackground } from '@/components/ui/aurora-background'
 
 export default function Hero() {
   return (
-    <AuroraBackground className="min-h-screen md:min-h-[80vh]">
+    <section className="relative min-h-screen md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-white">
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -66,6 +65,6 @@ export default function Hero() {
 
       {/* Decorative bottom accent */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-red via-accent-brass to-accent-teal opacity-80" />
-    </AuroraBackground>
+    </section>
   )
 }

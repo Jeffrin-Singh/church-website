@@ -10,8 +10,17 @@ export function createClient() {
 
   // Return early if environment variables are missing
   if (!url || !key) {
+    console.warn('[v0] Supabase environment variables are missing:', {
+      url: !!url,
+      key: !!key
+    })
     return null as any
   }
 
-  return createBrowserClient(url, key)
+  try {
+    return createBrowserClient(url, key)
+  } catch (error) {
+    console.error('[v0] Failed to create Supabase client:', error)
+    return null as any
+  }
 }

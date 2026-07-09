@@ -29,12 +29,18 @@ export default function LoginPage() {
     setLoading(true)
 
     if (!supabase) {
-      setError('Authentication service is loading. Please try again.')
+      setError('Authentication service is not configured. Please check environment variables.')
       setLoading(false)
       return
     }
 
     try {
+      if (typeof supabase.auth?.signInWithPassword !== 'function') {
+        setError('Authentication service is not properly initialized.')
+        setLoading(false)
+        return
+      }
+
       const { error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -50,7 +56,9 @@ export default function LoginPage() {
       router.push('/admin')
       router.refresh()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to sign in')
+      const errorMessage = err instanceof Error ? err.message : 'Failed to sign in'
+      setError(errorMessage)
+      console.error('[v0] Login error:', errorMessage)
       setLoading(false)
     }
   }

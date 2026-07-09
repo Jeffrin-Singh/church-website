@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
@@ -11,16 +11,28 @@ import { Alert } from '@/components/ui/alert'
 
 export default function LoginPage() {
   const router = useRouter()
-  const supabase = createClient()
   const [email, setEmail] = useState('admin@csi-new-church.com')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [supabase, setSupabase] = useState<any>(null)
+
+  useEffect(() => {
+    // Initialize Supabase client only on client side after hydration
+    const client = createClient()
+    setSupabase(client)
+  }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
     setLoading(true)
+
+    if (!supabase) {
+      setError('Authentication service is loading. Please try again.')
+      setLoading(false)
+      return
+    }
 
     try {
       const { error: authError } = await supabase.auth.signInWithPassword({
@@ -65,6 +77,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
+              disabled={!supabase || loading}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -77,6 +90,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
+              disabled={!supabase || loading}
             />
           </div>
 
@@ -86,8 +100,8 @@ export default function LoginPage() {
             </Alert>
           )}
 
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? 'Signing in...' : 'Sign In'}
+          <Button type="submit" disabled={loading || !supabase} className="w-full">
+            {!supabase ? 'Loading...' : loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 

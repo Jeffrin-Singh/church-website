@@ -16,9 +16,11 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [supabase, setSupabase] = useState<any>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Initialize Supabase client only on client side after hydration
+    // Mark component as mounted and initialize Supabase client
+    setMounted(true)
     const client = createClient()
     setSupabase(client)
   }, [])
@@ -52,9 +54,11 @@ export default function LoginPage() {
         return
       }
 
-      // Redirect to admin dashboard
-      router.push('/admin')
-      router.refresh()
+      // Redirect to admin dashboard only if component is mounted
+      if (mounted) {
+        router.push('/admin')
+        router.refresh()
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to sign in'
       setError(errorMessage)
